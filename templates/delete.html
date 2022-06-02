@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <form action="/delete" method="POST">
+        <label for="event_name">Please enter the event name</label><br>
+    <input type="text" name="event_name"><br>
+
+    <input type="submit" value="Delete Event">
+    <br>
+    </form>
+</div>
+    
+
+{% endblock %}

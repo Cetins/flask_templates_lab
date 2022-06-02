@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form action="/" method="post">
+        <label for="name">Event Name</label>
+        <input type="text" name="name">
+        <br>
+
+        <label for="date">Event Date</label>
+        <input type="date" name="date">
+        <br>
+
+        <label for="num_of_guests">Number Of Guests</label>
+        <input type="number" name="num_of_guests">
+        <br>
+
+        <label for="room_location">Location</label>
+        <input type="text" name="room_location">
+        <br>
+
+        <label for="description">Event Name</label>
+        <textarea name="description" cols="30" rows="2"></textarea>
+        <br>
+
+        <input type="submit" value="Add Event">
+        <br>
+        
+
+
+    </form>
+
+{% for event in events %}
+
+<div>
+    <h2>{{ event.event_name }}</h2>
+    <h3>{{ event.num_of_guests  }}</h3>
+    <h4>{{ event.room_location }}</h4>
+    <h4>{{ event.date }}</h4> 
+    <p>{{ event.description }}<p>
+    {% if event.recursive %}
+        <span>&#9842;</span>
+    {% endif %}
+    <form action="/delete/{{loop.index0}}" method="post">
+        <input type="submit" value="Delete Event">
+    </form>
+</div>
+      
+{% endfor%}
+
+{% endblock %}
